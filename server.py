@@ -1,15 +1,11 @@
 from flask import Flask, request, render_template
 from EmotionDetection.emotion_detection import emotion_detector
-from EmotionDetection.emotion_detection import emotion_predictor
 
 app = Flask("Emotion Detector")
 
 @app.route("/emotionDetector")
 def emotion_analyzer():
-    '''Retrieve the provided text string from the user, then pass the text
-    to be analyzed by the emotion detector. Finally, return a response displaying
-    the confidence scores across all emotions and the dominant emotion.
-    '''
+
     text_to_analyse = request.args.get('textToAnalyze')
     emotion_result = emotion_detector(text_to_analyse)
     anger = emotion_result['anger']
